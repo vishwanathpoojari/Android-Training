@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+
+public class UpdateEleInArrayList {
+    public static void main(String[] args) {
+        ArrayList<String> animals = new ArrayList<>();
+        animals.add("Dog");
+        animals.add("Cat");
+        animals.add("Elephant");
+        animals.add("Lion");
+        System.out.println("Original ArrayList:");
+        System.out.println(animals);
+        int indexToUpdateAni = 2;
+        if (indexToUpdate >= 0 && indexToUpdateAni < animals.size()) {
+            String newAnimal = "Giraffe";
+            animals.set(indexToUpdate, newAnimal);
+            System.out.println("\nArrayList after updating element at index " + indexToUpdateAni + ":");
+            System.out.println(animals);
+        } else {
+            System.out.println("\nInvalid index. Please provide a valid index within the ArrayList bounds.");
+        }
+    }
+}

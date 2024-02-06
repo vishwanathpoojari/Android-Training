@@ -1,0 +1,28 @@
+import java.util.TreeSet;
+
+public class Example{
+    public static void main(String[] args) {
+
+        TreeSet<String> treeSet1 = new TreeSet<>();
+
+        treeSet1.add("Red");
+        treeSet1.add("Green");
+        treeSet1.add("Blue");
+        TreeSet<String> treeSet2 = new TreeSet<>();
+        treeSet2.add("Yellow");
+        treeSet2.add("Purple");
+
+        System.out.println("TreeSet 1: " + treeSet1);
+        System.out.println("TreeSet 2: " + treeSet2);
+
+        addAllToTreeSet(treeSet2, treeSet1);
+
+        System.out.println("TreeSet 1 after addition: " + treeSet1);
+        System.out.println("TreeSet 2 after addition: " + treeSet2);
+    }
+
+    private static void addAllToTreeSet(TreeSet<String> destinationSet, TreeSet<String> sourceSet) {
+        // Using the addAll method to add all elements from sourceSet to destinationSet
+        destinationSet.addAll(sourceSet);
+    }
+}

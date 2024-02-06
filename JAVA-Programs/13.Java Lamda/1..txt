@@ -1,0 +1,11 @@
+interface SumCalculator {
+    int calculateSum(int a, int b);
+}
+
+public class LambdaSumExample {
+    public static void main(String[] args) {
+        SumCalculator sumCalculator = (a, b) -> a + b;
+        int result = sumCalculator.calculateSum(5, 7);
+        System.out.println("Sum of 5 and 7 is: " + result);
+    }
+}

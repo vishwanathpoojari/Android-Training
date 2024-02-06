@@ -1,0 +1,19 @@
+import java.util.PriorityQueue;
+
+public class Test {
+    public static void main(String[] args) {
+
+        PriorityQueue<String> priorityQueue = new PriorityQueue<>();
+        priorityQueue.add("Red");
+        priorityQueue.add("Green");
+        priorityQueue.add("Blue");
+        priorityQueue.add("Yellow");
+        priorityQueue.add("Purple");
+        System.out.println("Elements of the Priority Queue:");
+
+        while (!priorityQueue.isEmpty()) {
+            String color = priorityQueue.poll();
+            System.out.println(color);
+        }
+    }
+}

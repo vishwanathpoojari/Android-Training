@@ -1,0 +1,18 @@
+import java.util.TreeMap;
+
+public class TestTree{
+    public static void main(String[] args) {
+        TreeMap<String, Integer> sourceTreeMap = new TreeMap<>();
+        sourceTreeMap.put("John", 25);
+        sourceTreeMap.put("Jane", 30);
+        sourceTreeMap.put("Bob", 22);
+        TreeMap<String, Integer> destinationTreeMap = new TreeMap<>();
+        System.out.println("Source TreeMap: " + sourceTreeMap);
+        System.out.println("Destination TreeMap before copying: " + destinationTreeMap);
+        copyTreeMapContents(sourceTreeMap, destinationTreeMap);
+        System.out.println("Destination TreeMap after copying: " + destinationTreeMap);
+    }
+    private static <K, V> void copyTreeMapContents(TreeMap<K, V> source, TreeMap<K, V> destination) {
+        destination.putAll(source);
+    }
+}

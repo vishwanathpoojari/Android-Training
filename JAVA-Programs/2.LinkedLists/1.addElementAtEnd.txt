@@ -1,0 +1,17 @@
+import java.util.LinkedList;
+
+public class AppendEleToLinkedList {
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grapes");
+        System.out.println("Original LinkedList:");
+        System.out.println(linkedList);
+        String elementToAppend = "Mango";
+        linkedList.addLast(elementToAppend);
+        System.out.println("\nLinkedList after appending '" + elementToAppend + "':");
+        System.out.println(linkedList);
+    }
+}

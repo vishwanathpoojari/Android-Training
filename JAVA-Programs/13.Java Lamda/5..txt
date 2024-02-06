@@ -1,0 +1,14 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class LambdaStringSortExample {
+    public static void main(String[] args) {
+        List<String> stringList = Arrays.asList("banana", "apple", "date", "cherry");
+        List<String> sortedList = stringList.stream()
+                .sorted((s1, s2) -> s1.compareToIgnoreCase(s2))
+                .collect(Collectors.toList());
+        System.out.println("Original List: " + stringList);
+        System.out.println("Sorted List: " + sortedList);
+    }
+}

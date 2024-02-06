@@ -1,0 +1,13 @@
+interface StringChecker {
+    boolean checkEmpty(String str);
+}
+
+public class Test{
+    public static void main(String[] args) {
+        StringChecker stringEmptyChecker = str -> str.isEmpty();
+        String emptyString = "";
+        String nonEmptyString = "Hello, World!";
+        System.out.println("Is the empty string empty? " + stringEmptyChecker.checkEmpty(emptyString));
+        System.out.println("Is the non-empty string empty? " + stringEmptyChecker.checkEmpty(nonEmptyString));
+    }
+}

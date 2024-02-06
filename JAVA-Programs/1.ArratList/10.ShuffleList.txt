@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ShuffleArrayListEle {
+    public static void main(String[] args) {
+        ArrayList<String> colors = new ArrayList<>();
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Purple");
+        System.out.println("Original ArrayList:");
+        System.out.println(colors);
+        Collections.shuffle(colors);
+        System.out.println("\nShuffled ArrayList:");
+        System.out.println(colors);
+    }
+}

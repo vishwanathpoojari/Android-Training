@@ -1,0 +1,20 @@
+import java.util.PriorityQueue;
+
+public class Test {
+    public static void main(String[] args) {
+
+        PriorityQueue<String> priorityQueue = new PriorityQueue<>();
+        priorityQueue.add("Red");
+        priorityQueue.add("Green");
+        priorityQueue.add("Blue");
+
+        System.out.println("Priority Queue before insertion: " + priorityQueue);
+        String elementToInsert = "Yellow";
+        insertIntoPriorityQueue(priorityQueue, elementToInsert);
+        System.out.println("Priority Queue after insertion: " + priorityQueue);
+    }
+
+    private static void insertIntoPriorityQueue(PriorityQueue<String> priorityQueue, String element) {
+        priorityQueue.add(element);
+    }
+}

@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class SeparateConsonantsAndVowelsExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+        String[] separatedParts = separateConsonantsAndVowels(inputString);
+        System.out.println("Original String: " + inputString);
+        System.out.println("Consonants: " + separatedParts[0]);
+        System.out.println("Vowels: " + separatedParts[1]);
+    }
+
+    private static String[] separateConsonantsAndVowels(String input) {
+        StringBuilder consonants = new StringBuilder();
+        StringBuilder vowels = new StringBuilder();
+
+        for (char c : input.toLowerCase().toCharArray()) {
+            if (Character.isLetter(c)) {
+                if (isVowel(c)) {
+                    vowels.append(c);
+                } else {
+                    consonants.append(c);
+                }
+            }
+        }
+
+        return new String[]{consonants.toString(), vowels.toString()};
+    }
+
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+}

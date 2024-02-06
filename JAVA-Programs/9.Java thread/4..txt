@@ -1,0 +1,82 @@
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+class MatrixMultiplier implements Runnable {
+    private final int[][] matrixA;
+    private final int[][] matrixB;
+    private final int[][] result;
+    private final int row;
+    private final int col;
+
+    public MatrixMultiplier(int[][] matrixA, int[][] matrixB, int[][] result, int row, int col) {
+        this.matrixA = matrixA;
+        this.matrixB = matrixB;
+        this.result = result;
+        this.row = row;
+        this.col = col;
+    }
+
+    @Override
+    public void run() {
+        int sum = 0;
+        for (int i = 0; i < matrixA[0].length; i++) {
+            sum += matrixA[row][i] * matrixB[i][col];
+        }
+        result[row][col] = sum;
+    }
+}
+
+public class MatrixMultiplicationExample {
+    public static void main(String[] args) {
+        int[][] matrixA = {{1, 2, 3}, {4, 5, 6}};
+        int[][] matrixB = {{7, 8}, {9, 10}, {11, 12}};
+        int[][] result = new int[matrixA.length][matrixB[0].length];
+
+        multiplyMatrices(matrixA, matrixB, result);
+        System.out.println("Matrix A:");
+        printMatrix(matrixA);
+
+        System.out.println("\nMatrix B:");
+        printMatrix(matrixB);
+
+        System.out.println("\nResult Matrix:");
+        printMatrix(result);
+    }
+
+    private static void multiplyMatrices(int[][] matrixA, int[][] matrixB, int[][] result) {
+        int numRowsA = matrixA.length;
+        int numColsA = matrixA[0].length;
+        int numRowsB = matrixB.length;
+        int numColsB = matrixB[0].length;
+
+        if (numColsA != numRowsB) {
+            throw new IllegalArgumentException("The number of columns in matrix A must be equal to the number of rows in matrix B.");
+        }
+
+        int numThreads = Runtime.getRuntime().availableProcessors();
+        ExecutorService executor = Executors.newFixedThreadPool(numThreads);
+
+        for (int i = 0; i < numRowsA; i++) {
+            for (int j = 0; j < numColsB; j++) {
+                executor.execute(new MatrixMultiplier(matrixA, matrixB, result, i, j));
+            }
+        }
+
+        executor.shutdown();
+        try {
+            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}

@@ -1,0 +1,12 @@
+public class RemoveNonAlphanumericExample {
+    public static void main(String[] args) {
+        String inputString = "Hello, @World!123";
+        String resultString = removeNonAlphanumeric(inputString);
+        System.out.println("Original String: " + inputString);
+        System.out.println("String after removing non-alphanumeric characters: " + resultString);
+    }
+
+    private static String removeNonAlphanumeric(String input) {
+        return input.replaceAll("[^a-zA-Z0-9]", "");
+    }
+}

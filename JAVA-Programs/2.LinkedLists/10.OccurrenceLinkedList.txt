@@ -1,0 +1,33 @@
+import java.util.LinkedList;
+
+public class OccurrenceLinkedList {
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Element 1");
+        linkedList.add("Element 2");
+        linkedList.add("Element 3");
+        linkedList.add("Element 2");
+        linkedList.add("Element 4");
+        linkedList.add("Element 2");
+        System.out.println("Linked List: " + linkedList);
+        String targetElement = "Element 2";
+        int firstOccurrenceIndex = findFirstOccurrence(linkedList, targetElement);
+        if (firstOccurrenceIndex != -1) {
+            System.out.println("First occurrence of '" + targetElement + "' at index: " + firstOccurrenceIndex);
+        } else {
+            System.out.println("'" + targetElement + "' not found in the linked list.");
+        }
+        int lastOccurrenceIndex = findLastOccurrence(linkedList, targetElement);
+        if (lastOccurrenceIndex != -1) {
+            System.out.println("Last occurrence of '" + targetElement + "' at index: " + lastOccurrenceIndex);
+        } else {
+            System.out.println("'" + targetElement + "' not found in the linked list.");
+        }
+    }
+    private static int findFirstOccurrence(LinkedList<String> linkedList, String element) {
+        return linkedList.indexOf(element);
+    }
+    private static int findLastOccurrence(LinkedList<String> linkedList, String element) {
+        return linkedList.lastIndexOf(element);
+    }
+}

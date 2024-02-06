@@ -1,0 +1,17 @@
+import java.util.Set;
+import java.util.TreeMap;
+
+public class TestTree{
+    public static void main(String[] args) {
+        TreeMap<String, Integer> myTreeMap = new TreeMap<>();
+        myTreeMap.put("John", 25);
+        myTreeMap.put("Jane", 30);
+        myTreeMap.put("Bob", 22);
+        System.out.println("TreeMap: " + myTreeMap);
+        Set<String> keys = getAllKeys(myTreeMap);
+        System.out.println("All Keys in the TreeMap: " + keys);
+    }
+    private static <K, V> Set<K> getAllKeys(TreeMap<K, V> map) {
+        return map.keySet();
+    }
+}

@@ -1,0 +1,17 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Test{
+    public static void main(String[] args) {
+        Map<String, Integer> myMap = new HashMap<>();
+        boolean isEmpty = isMapEmpty(myMap);
+        if (isEmpty) {
+            System.out.println("The map is empty.");
+        } else {
+            System.out.println("The map is not empty.");
+        }
+    }
+    private static <K, V> boolean isMapEmpty(Map<K, V> map) {
+        return map.isEmpty();
+    }
+}

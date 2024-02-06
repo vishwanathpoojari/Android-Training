@@ -1,0 +1,26 @@
+import java.util.PriorityQueue;
+
+public class Test {
+    public static void main(String[] args) {
+
+        PriorityQueue<String> priorityQueue1 = new PriorityQueue<>();
+        priorityQueue1.add("Red");
+        priorityQueue1.add("Green");
+        priorityQueue1.add("Blue");
+
+        PriorityQueue<String> priorityQueue2 = new PriorityQueue<>();
+        priorityQueue2.add("Yellow");
+        priorityQueue2.add("Purple");
+
+        System.out.println("PriorityQueue 1: " + priorityQueue1);
+        System.out.println("PriorityQueue 2: " + priorityQueue2);
+        addAllToPriorityQueue(priorityQueue2, priorityQueue1);
+        System.out.println("PriorityQueue 1 after addition: " + priorityQueue1);
+        System.out.println("PriorityQueue 2 after addition: " + priorityQueue2);
+    }
+
+    private static void addAllToPriorityQueue(PriorityQueue<String> destinationQueue, PriorityQueue<String> sourceQueue) {
+        // Using the addAll method to add all elements from sourceQueue to destinationQueue
+        destinationQueue.addAll(sourceQueue);
+    }
+}

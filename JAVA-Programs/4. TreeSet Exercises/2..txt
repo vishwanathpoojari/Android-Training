@@ -1,0 +1,21 @@
+import java.util.TreeSet;
+import java.util.Iterator;
+
+public class Test{
+    public static void main(String[] args) {
+
+        TreeSet<String> treeSet = new TreeSet<>();
+        treeSet.add("Red");
+        treeSet.add("Green");
+        treeSet.add("Blue");
+        treeSet.add("Yellow");
+        treeSet.add("Purple");
+
+        System.out.println("Iterating through elements in TreeSet:");
+        Iterator<String> iterator = treeSet.iterator();
+        while (iterator.hasNext()) {
+            String color = iterator.next();
+            System.out.println(color);
+        }
+    }
+}

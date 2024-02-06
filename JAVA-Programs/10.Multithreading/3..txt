@@ -1,0 +1,57 @@
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+class SharedResource {
+    private int counter = 0;
+    private final Lock lock = new ReentrantLock();
+
+    public void increment() {
+        lock.lock();
+        try {
+            counter++;
+            System.out.println(Thread.currentThread().getName() + " incremented counter to: " + counter);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+}
+
+class IncrementThread implements Runnable {
+    private final SharedResource sharedResource;
+
+    public IncrementThread(SharedResource sharedResource) {
+        this.sharedResource = sharedResource;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            sharedResource.increment();
+        }
+    }
+}
+
+public class ReentrantLockExample {
+    public static void main(String[] args) {
+        SharedResource sharedResource = new SharedResource();
+
+        Thread thread1 = new Thread(new IncrementThread(sharedResource), "Thread 1");
+        Thread thread2 = new Thread(new IncrementThread(sharedResource), "Thread 2");
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Final Counter Value: " + sharedResource.getCounter());
+    }
+}

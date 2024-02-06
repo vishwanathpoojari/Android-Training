@@ -1,0 +1,24 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Test{
+    public static void main(String[] args) {
+        List<String> stringList = Arrays.asList("Java", "Programming", "Streams", "Example");
+        List<String> uppercasedList = convertToUppercase(stringList);
+        List<String> lowercasedList = convertToLowercase(stringList);
+        System.out.println("Original List: " + stringList);
+        System.out.println("Uppercased List: " + uppercasedList);
+        System.out.println("Lowercased List: " + lowercasedList);
+    }
+    private static List<String> convertToUppercase(List<String> strings) {
+        return strings.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+    }
+    private static List<String> convertToLowercase(List<String> strings) {
+        return strings.stream()
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
+    }
+}

@@ -1,0 +1,22 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateEleFromPosition {
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grapes");
+        linkedList.add("Mango");
+        System.out.println("Original LinkedList:");
+        System.out.println(linkedList);
+        int startPosition = 2;
+        System.out.println("\nIterating through elements from position " + startPosition + ":");
+        ListIterator<String> iterator = linkedList.listIterator(startPosition);
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+    }
+}

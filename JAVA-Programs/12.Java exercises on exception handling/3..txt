@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class NegativeNumberCheckExample {
+    public static void main(String[] args) {
+        String filePath = "/path/to/your/numbers.txt"; 
+        try {
+            checkNegativeNumbers(filePath);
+            System.out.println("All numbers are non-positive.");
+        } catch (PositiveNumberException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
+    }
+
+    private static void checkNegativeNumbers(String filePath) throws IOException, PositiveNumberException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                int number = Integer.parseInt(line.trim());
+                if (number > 0) {
+                    throw new PositiveNumberException("Error: Positive number found - " + number);
+                }
+            }
+        }
+    }
+}
+
+class PositiveNumberException extends Exception {
+    public PositiveNumberException(String message) {
+        super(message);
+    }
+}

@@ -1,0 +1,11 @@
+import java.util.function.IntUnaryOperator;
+import java.util.stream.IntStream;
+
+public class LambdaFactorialExample {
+    public static void main(String[] args) {
+        int number = 5;
+        IntUnaryOperator factorial = n -> IntStream.rangeClosed(1, n).reduce(1, (x, y) -> x * y);
+        int result = factorial.applyAsInt(number);
+        System.out.println("Factorial of " + number + " is: " + result);
+    }
+}

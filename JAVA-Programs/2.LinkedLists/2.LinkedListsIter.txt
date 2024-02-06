@@ -1,0 +1,18 @@
+import java.util.LinkedList;
+import java.util.Iterator;
+
+public class IterateLinkedListEle {
+    public static void main(String[] args) {
+        LinkedList<String> linkedListEle = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grapes");
+        System.out.println("Original LinkedList:");
+        System.out.printlnlinkedListEle 
+        System.out.println("\nIterating through all elements using for-each loop:");
+        for (String element : linkedListEle ) {
+            System.out.println(element);
+        }
+    }
+}

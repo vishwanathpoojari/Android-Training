@@ -1,0 +1,25 @@
+import java.util.PriorityQueue;
+import java.util.Iterator;
+
+public class Test {
+    public static void main(String[] args) {
+        PriorityQueue<String> priorityQueue = new PriorityQueue<>();
+
+        priorityQueue.add("Red");
+        priorityQueue.add("Green");
+        priorityQueue.add("Blue");
+        priorityQueue.add("Yellow");
+        priorityQueue.add("Purple");
+
+        System.out.println("Iterating through elements in Priority Queue using Iterator:");
+        Iterator<String> iterator = priorityQueue.iterator();
+        while (iterator.hasNext()) {
+            String color = iterator.next();
+            System.out.println(color);
+        }
+        System.out.println("\nIterating through elements in Priority Queue using Loop:");
+        for (String color : priorityQueue) {
+            System.out.println(color);
+        }
+    }
+}

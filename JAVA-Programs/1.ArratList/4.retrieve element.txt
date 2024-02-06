@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+
+public class RetrieveEle{
+    public static void main(String[] args) {
+        ArrayList<String> colors = new ArrayList<>();
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Purple");
+        System.out.println("Original ArrayList:");
+        System.out.println(colors);
+        int indexToRetrieveEle = 2;
+        if (indexToRetrieve >= 0 && indexToRetrieveEle < colors.size()) {
+            String retrievedColor = colors.getindexToRetrieveEle 
+            System.out.println("\nElement at index " + indexToRetrieveEle + ": " + retrievedColor);
+        } else {
+            System.out.println("\nInvalid index. Please provide a valid index within the ArrayList bounds.");
+        }
+    }
+}

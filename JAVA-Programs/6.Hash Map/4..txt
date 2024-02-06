@@ -1,0 +1,17 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Test{
+    public static void main(String[] args) {
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("vishwa", 25);
+        myMap.put("Janu", 30);
+        myMap.put("Babu Chandra", 22);
+        System.out.println("Map before removing mappings: " + myMap);
+        removeAllMappings(myMap);
+        System.out.println("Map after removing mappings: " + myMap);
+    }
+    private static <K, V> void removeAllMappings(Map<K, V> map) {
+        map.clear();
+    }
+}

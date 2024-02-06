@@ -1,0 +1,54 @@
+import java.util.concurrent.Semaphore;
+
+class SharedResource {
+    private static final int MAX_PERMITS = 2; 
+
+    private final Semaphore semaphore = new Semaphore(MAX_PERMITS);
+
+    public void accessResource() {
+        try {
+            semaphore.acquire();
+            System.out.println(Thread.currentThread().getName() + " is accessing the shared resource.");
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaphore.release(); 
+            System.out.println(Thread.currentThread().getName() + " released the permit.");
+        }
+    }
+}
+
+class AccessThread implements Runnable {
+    private final SharedResource sharedResource;
+
+    public AccessThread(SharedResource sharedResource) {
+        this.sharedResource = sharedResource;
+    }
+
+    @Override
+    public void run() {
+        sharedResource.accessResource();
+    }
+}
+
+public class SemaphoreExample {
+    public static void main(String[] args) {
+        SharedResource sharedResource = new SharedResource();
+        Thread thread1 = new Thread(new AccessThread(sharedResource), "Thread 1");
+        Thread thread2 = new Thread(new AccessThread(sharedResource), "Thread 2");
+        Thread thread3 = new Thread(new AccessThread(sharedResource), "Thread 3");
+        thread1.start();
+        thread2.start();
+        thread3.start();
+
+        try {
+            // Waiting for all threads to complete
+            thread1.join();
+            thread2.join();
+            thread3.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+public class InsertAtFirstPosition {
+    public static void main(String[] args) {
+        ArrayList<String> fruits = new ArrayList<>();
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grapes");
+        fruits.add("Mango");
+        System.out.println("Original ArrayList:");
+        System.out.println(fruits);
+        String newFruit = "Apple";
+        fruits.add(0, newFruit);
+        System.out.println("\nArrayList after inserting at the first position:");
+        System.out.println(fruits);
+    }
+}

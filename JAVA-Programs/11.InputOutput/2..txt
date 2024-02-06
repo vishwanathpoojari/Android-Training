@@ -1,0 +1,30 @@
+import java.io.File;
+import java.io.FilenameFilter;
+
+public class FileExtensionFilterExample {
+    public static void main(String[] args) {
+        String folderPath = "/path/to/your/folder";
+        String[] extensions = { "txt", "csv", "java" };
+        File[] filteredFiles = getFilesWithExtensions(folderPath, extensions);
+        System.out.println("Files with specified extensions:");
+        for (File file : filteredFiles) {
+            System.out.println(file.getName());
+        }
+    }
+
+    private static File[] getFilesWithExtensions(String folderPath, final String[] extensions) {
+        File folder = new File(folderPath);
+        FilenameFilter extensionFilter = new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                for (String extension : extensions) {
+                    if (name.toLowerCase().endsWith("." + extension.toLowerCase())) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        };
+        return folder.listFiles(extensionFilter);
+    }
+}

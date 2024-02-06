@@ -1,0 +1,29 @@
+import java.nio.file.*;
+
+public class FileReadExample {
+    public static void main(String[] args) {
+        String filePath = "/path/to/your/file.txt";
+        try {
+            String fileContent = readFile(filePath);
+            System.out.println("File content: " + fileContent);
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static String readFile(String filePath) throws FileNotFoundException {
+        Path path = Paths.get(filePath);
+
+        try {
+            return new String(Files.readAllBytes(path));
+        } catch (IOException e) {
+            throw new FileNotFoundException("Error: File not found or cannot be read.");
+        }
+    }
+}
+
+class FileNotFoundException extends RuntimeException {
+    public FileNotFoundException(String message) {
+        super(message);
+    }
+}

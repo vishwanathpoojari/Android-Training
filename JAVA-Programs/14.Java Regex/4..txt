@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class MoveLowercaseToFrontExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String inputWord = scanner.nextLine();
+        String resultWord = moveLowercaseToFront(inputWord);
+        System.out.println("Original Word: " + inputWord);
+        System.out.println("Word with lowercase letters moved to the front: " + resultWord);
+    }
+
+    private static String moveLowercaseToFront(String word) {
+        StringBuilder lowerCasePart = new StringBuilder();
+        StringBuilder upperCasePart = new StringBuilder();
+
+        for (char c : word.toCharArray()) {
+            if (Character.isLowerCase(c)) {
+                lowerCasePart.append(c);
+            } else {
+                upperCasePart.append(c);
+            }
+        }
+        return lowerCasePart.toString() + upperCasePart.toString();
+    }
+}

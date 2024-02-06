@@ -1,0 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class TEst{
+    public static void main(String[] args) {
+        Map<String, Integer> sourceMap = new HashMap<>();
+        sourceMap.put("vishwa", 25);
+        sourceMap.put("chandra", 30);
+        sourceMap.put("Babu", 22);
+        Map<String, Integer> destinationMap = new HashMap<>();
+        System.out.println("Source Map: " + sourceMap);
+        System.out.println("Destination Map before copying: " + destinationMap);
+        copyMappings(sourceMap, destinationMap);
+        System.out.println("Destination Map after copying: " + destinationMap);
+    }
+    private static <K, V> void copyMappings(Map<K, V> source, Map<K, V> destination) {
+        destination.putAll(source);
+    }
+}

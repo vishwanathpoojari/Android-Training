@@ -1,0 +1,46 @@
+class SharedCounter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+class IncrementThread implements Runnable {
+    private final SharedCounter sharedCounter;
+
+    public IncrementThread(SharedCounter sharedCounter) {
+        this.sharedCounter = sharedCounter;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 1000; i++) {
+            sharedCounter.increment();
+        }
+    }
+}
+
+public class ConcurrentIncrementExample {
+    public static void main(String[] args) {
+        SharedCounter sharedCounter = new SharedCounter();
+        int numThreads = 5;
+        Thread[] threads = new Thread[numThreads];
+        for (int i = 0; i < numThreads; i++) {
+            threads[i] = new Thread(new IncrementThread(sharedCounter));
+            threads[i].start();
+        }
+        for (Thread thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Final Count: " + sharedCounter.getCount());
+    }
+}

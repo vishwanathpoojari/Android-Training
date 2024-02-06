@@ -1,0 +1,25 @@
+import java.util.LinkedList;
+
+public class InsertFirstLastLinkedList {
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Print the original linked list
+        System.out.println("Original LinkedList:");
+        System.out.println(linkedList);
+
+        // Insert an element at the first position
+        String firstElement = "Apple";
+        linkedList.addFirst(firstElement);
+
+        // Insert an element at the last position
+        String lastElement = "Grapes";
+        linkedList.addLast(lastElement);
+
+        // Print the updated linked list
+        System.out.println("\nLinkedList after inserting elements at first and last positions:");
+        System.out.println(linkedList);
+    }
+}

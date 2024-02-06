@@ -1,0 +1,37 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class DuplicateNumberCheckExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a list of integers separated by spaces: ");
+        String input = scanner.nextLine();
+
+        try {
+            checkForDuplicates(input);
+            System.out.println("No duplicates found in the list.");
+        } catch (DuplicateNumberException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void checkForDuplicates(String input) throws DuplicateNumberException {
+        String[] numbers = input.split("\\s+");
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        for (String numStr : numbers) {
+            int number = Integer.parseInt(numStr);
+            if (!uniqueNumbers.add(number)) {
+                throw new DuplicateNumberException("Error: Duplicate number found - " + number);
+            }
+        }
+    }
+}
+
+class DuplicateNumberException extends Exception {
+    public DuplicateNumberException(String message) {
+        super(message);
+    }
+}

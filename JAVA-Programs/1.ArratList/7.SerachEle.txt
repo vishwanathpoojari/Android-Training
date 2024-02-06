@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SearchEleInArrayList {
+    public static void main(String[] args) {
+        ArrayList<String> colors = new ArrayList<>();
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Purple");
+        System.out.println("Original ArrayList:");
+        System.out.println(colors);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nEnter the element to search: ");
+        String eleToSearch = scanner.nextLine();
+        int indexOfElement = colors.indexOf(eleToSearch);
+        if (indexOfElement != -1) {
+            System.out.println("\nElement '" + eleToSearch + "' found at index " + indexOfElement);
+        } else {
+            System.out.println("\nElement '" + eleToSearch + "' not found in the ArrayList.");
+        }
+    }
+}

@@ -1,0 +1,25 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class Test{
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int sumOfEven = calculateSumOfEven(numbers);
+        int sumOfOdd = calculateSumOfOdd(numbers);
+        System.out.println("Original List: " + numbers);
+        System.out.println("Sum of Even Numbers: " + sumOfEven);
+        System.out.println("Sum of Odd Numbers: " + sumOfOdd);
+    }
+    private static int calculateSumOfEven(List<Integer> numbers) {
+        return numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+    private static int calculateSumOfOdd(List<Integer> numbers) {
+        return numbers.stream()
+                .filter(n -> n % 2 != 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+}

@@ -1,0 +1,15 @@
+import java.util.TreeMap;
+
+public class TestTree{
+    public static void main(String[] args) {
+        TreeMap<String, Integer> myTreeMap = new TreeMap<>();
+        myTreeMap.put("John", 25);
+        myTreeMap.put("Jane", 30);
+        myTreeMap.put("Bob", 22);
+        System.out.println("TreeMap before adding a new entry: " + myTreeMap);
+        String newKey = "Alice";
+        int newValue = 28;
+        myTreeMap.put(newKey, newValue);
+        System.out.println("TreeMap after adding a new entry: " + myTreeMap);
+    }
+}

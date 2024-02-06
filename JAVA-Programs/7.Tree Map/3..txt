@@ -1,0 +1,20 @@
+import java.util.TreeMap;
+
+public class TestTree{
+    public static void main(String[] args) {
+        TreeMap<String, Integer> myTreeMap = new TreeMap<>();
+        myTreeMap.put("John", 25);
+        myTreeMap.put("Jane", 30);
+        myTreeMap.put("Bob", 22);
+        System.out.println("TreeMap: " + myTreeMap);
+        String searchKey = "Jane";
+        searchForKey(myTreeMap, searchKey);
+    }
+    private static <K, V> void searchForKey(TreeMap<K, V> map, K key) {
+        if (map.containsKey(key)) {
+            System.out.println("Key '" + key + "' found with value: " + map.get(key));
+        } else {
+            System.out.println("Key '" + key + "' not found in the TreeMap.");
+        }
+    }
+}

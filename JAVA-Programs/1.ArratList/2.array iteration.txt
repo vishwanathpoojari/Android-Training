@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+public class IterateArrayList {
+    public static void main(String[] args) {
+        ArrayList<String> programs = new ArrayList<>();
+        programs.add("java");
+        programs.add("python");
+        programs.add("CSharp");
+        programs.add("kotlin");
+        System.out.println("\nUsing a for-each loop:");
+        for (String program : programs) {
+            System.out.println(program);
+        }
+    }
+}

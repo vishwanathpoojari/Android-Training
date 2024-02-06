@@ -1,0 +1,14 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class LambdaStringCaseConversionExample {
+    public static void main(String[] args) {
+        List<String> stringList = Arrays.asList("apple", "banana", "cherry", "date");
+        List<String> uppercasedList = stringList.stream().map(String::toUpperCase).collect(Collectors.toList());
+        List<String> lowercasedList = stringList.stream().map(String::toLowerCase).collect(Collectors.toList());
+        System.out.println("Original List: " + stringList);
+        System.out.println("Uppercased List: " + uppercasedList);
+        System.out.println("Lowercased List: " + lowercasedList);
+    }
+}

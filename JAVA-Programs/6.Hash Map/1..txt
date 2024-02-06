@@ -1,0 +1,15 @@
+import java.util.HashMap;
+
+public class Test{
+    public static void main(String[] args) {
+        HashMap<String, Integer> myMap = new HashMap<>();
+        myMap.put("John", 25);
+        myMap.put("Jane", 30);
+        myMap.put("Bob", 22);
+        System.out.println("HashMap before adding a new entry: " + myMap);
+        String newKey = "Alice";
+        int newValue = 28;
+        myMap.put(newKey, newValue);
+        System.out.println("HashMap after adding a new entry: " + myMap);
+    }
+}

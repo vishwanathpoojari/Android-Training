@@ -1,0 +1,19 @@
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Scanner;
+
+public class ThousandSeparatorExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        double number = scanner.nextDouble();
+        String formattedNumber = formatWithThousandSeparators(number);
+        System.out.println("Formatted Number: " + formattedNumber);
+    }
+
+    private static String formatWithThousandSeparators(double number) {
+        // Use NumberFormat to add thousand separators
+        NumberFormat numberFormat = new DecimalFormat("#,###.##");
+        return numberFormat.format(number);
+    }
+}

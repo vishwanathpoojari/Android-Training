@@ -1,0 +1,22 @@
+import java.util.LinkedList;
+
+public class InsertEleAtPosition {
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grapes");
+        System.out.println("Original LinkedList:");
+        System.out.println(linkedList);
+        String elementToInsert = "Mango";
+        int positionToInsert = 2;
+        if (positionToInsert >= 0 && positionToInsert <= linkedList.size()) {
+            linkedList.add(positionToInsert, elementToInsert);
+            System.out.println("\nLinkedList after inserting '" + elementToInsert + "' at position " + positionToInsert + ":");
+            System.out.println(linkedList);
+        } else {
+            System.out.println("\nInvalid position. Please provide a valid position within the LinkedList bounds.");
+        }
+    }
+}

@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class EmptyFileCheckExample {
+    public static void main(String[] args) {
+        String filePath = "/path/to/your/file.txt";
+        try {
+            checkIfFileNotEmpty(filePath);
+            System.out.println("The file is not empty.");
+        } catch (EmptyFileException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
+    }
+
+    private static void checkIfFileNotEmpty(String filePath) throws IOException, EmptyFileException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            if (reader.readLine() == null) {
+                throw new EmptyFileException("Error: The file is empty.");
+            }
+        }
+    }
+}
+
+class EmptyFileException extends Exception {
+    public EmptyFileException(String message) {
+        super(message);
+    }
+}

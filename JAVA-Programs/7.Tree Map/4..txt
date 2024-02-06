@@ -1,0 +1,20 @@
+import java.util.TreeMap;
+
+public class Tree{
+    public static void main(String[] args) {
+        TreeMap<String, Integer> myTreeMap = new TreeMap<>();
+        myTreeMap.put("John", 25);
+        myTreeMap.put("Jane", 30);
+        myTreeMap.put("Bob", 22);
+        System.out.println("TreeMap: " + myTreeMap);
+        int searchValue = 30;
+        searchForValue(myTreeMap, searchValue);
+    }
+    private static <K, V> void searchForValue(TreeMap<K, V> map, V value) {
+        if (map.containsValue(value)) {
+            System.out.println("Value '" + value + "' found in the TreeMap.");
+        } else {
+            System.out.println("Value '" + value + "' not found in the TreeMap.");
+        }
+    }
+}

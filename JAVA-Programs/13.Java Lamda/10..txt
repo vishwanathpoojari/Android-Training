@@ -1,0 +1,12 @@
+public class LambdaStringConcatenationExample {
+    public static void main(String[] args) {
+        StringConcatenator concatenator = (s1, s2) -> s1 + s2;
+        String result = concatenator.concatenate("Hello, ", "World!");
+        System.out.println(result);
+    }
+}
+
+@FunctionalInterface
+interface StringConcatenator {
+    String concatenate(String str1, String str2);
+}

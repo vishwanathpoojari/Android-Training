@@ -1,0 +1,21 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class ReverseIterateEleLinkedList {
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grapes");
+        linkedList.add("Mango");
+        System.out.println("Original LinkedList:");
+        System.out.println(linkedList);
+        System.out.println("\nIterating through elements in reverse order:");
+        ListIterator<String> iterator = linkedList.listIterator(linkedList.size());
+        while (iterator.hasPrevious()) {
+            String element = iterator.previous();
+            System.out.println(element);
+        }
+    }
+}

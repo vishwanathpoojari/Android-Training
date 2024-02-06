@@ -1,0 +1,55 @@
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+class WebCrawler implements Runnable {
+    private final String url;
+    private final Set<String> visitedUrls;
+    private final ExecutorService executorService;
+
+    public WebCrawler(String url, Set<String> visitedUrls, ExecutorService executorService) {
+        this.url = url;
+        this.visitedUrls = visitedUrls;
+        this.executorService = executorService;
+    }
+
+    @Override
+    public void run() {
+        try {
+            // Simulate crawling by printing the URL
+            System.out.println("Crawling: " + url);
+            visitedUrls.add(url);
+            Set<String> extractedLinks = new HashSet<>();
+            for (String link : extractedLinks) {
+                if (!visitedUrls.contains(link)) {
+                    executorService.execute(new WebCrawler(link, visitedUrls, executorService));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+public class ConcurrentWebCrawler {
+    public static void main(String[] args) {
+        String initialUrl = "https://example.com";
+        Set<String> visitedUrls = new HashSet<>();
+        int numThreads = Runtime.getRuntime().availableProcessors();
+        ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
+        WebCrawler initialCrawler = new WebCrawler(initialUrl, visitedUrls, executorService);
+        executorService.execute(initialCrawler);
+        try {
+            executorService.shutdown();
+            executorService.awaitTermination(10, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Crawling completed!");
+    }
+}

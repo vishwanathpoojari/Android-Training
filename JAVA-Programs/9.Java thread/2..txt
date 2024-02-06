@@ -1,0 +1,36 @@
+class EvenOddPrinter implements Runnable {
+    private final int max;
+    private final boolean isEven;
+
+    public EvenOddPrinter(int max, boolean isEven) {
+        this.max = max;
+        this.isEven = isEven;
+    }
+
+    @Override
+    public void run() {
+        for (int i = isEven ? 2 : 1; i <= max; i += 2) {
+            if (isEven) {
+                System.out.println("Even Thread: " + i);
+            } else {
+                System.out.println("Odd Thread: " + i);
+            }
+
+            try {
+                Thread.sleep(500); // Adding a delay for better visibility
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class EvenOddThreadExample {
+    public static void main(String[] args) {
+        int maxNumber = 20;
+        Thread evenThread = new Thread(new EvenOddPrinter(maxNumber, true));
+        Thread oddThread = new Thread(new EvenOddPrinter(maxNumber, false));
+        evenThread.start();
+        oddThread.start();
+    }
+}

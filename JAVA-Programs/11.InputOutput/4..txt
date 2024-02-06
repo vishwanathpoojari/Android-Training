@@ -1,0 +1,25 @@
+import java.nio.file.*;
+import java.nio.file.attribute.*;
+
+public class FilePermissionsExample {
+    public static void main(String[] args) {
+        String path = "/path/to/your/file_or_directory";
+        checkPermissions(path);
+    }
+
+    private static void checkPermissions(String path) {
+        Path filePath = Paths.get(path);
+        boolean isReadable = Files.isReadable(filePath);
+        boolean isWritable = Files.isWritable(filePath);
+        if (isReadable && isWritable) {
+            System.out.println("The file or directory has read and write permissions.");
+        } else {
+            if (!isReadable) {
+                System.out.println("The file or directory does not have read permissions.");
+            }
+            if (!isWritable) {
+                System.out.println("The file or directory does not have write permissions.");
+            }
+        }
+    }
+}

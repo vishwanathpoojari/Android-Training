@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+public class CopyArrayList {
+    public static void main(String[] args) {
+        ArrayList<String> List1= new ArrayList<>();
+        sourceList.add("Apple");
+        sourceList.add("Banana");
+        sourceList.add("Orange");
+        sourceList.add("Grapes");
+        sourceList.add("Mango");
+        System.out.println("Source ArrayList:");
+        System.out.println(sourceList);
+        ArrayList<String> List2= new ArrayList<>();
+        List2.addAll(List1);
+        System.out.println("\nCopied Destination ArrayList:");
+        System.out.println(List2);
+    }
+}

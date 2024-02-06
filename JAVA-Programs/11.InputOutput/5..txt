@@ -1,0 +1,21 @@
+import java.nio.file.*;
+
+public class FileTypeCheckExample {
+    public static void main(String[] args) {
+        String path = "/path/to/your/file_or_directory";
+        checkFileType(path);
+    }
+
+    private static void checkFileType(String path) {
+        Path filePath = Paths.get(path);
+        boolean isDirectory = Files.isDirectory(filePath);
+        boolean isFile = Files.isRegularFile(filePath);
+        if (isDirectory) {
+            System.out.println("The specified path is a directory.");
+        } else if (isFile) {
+            System.out.println("The specified path is a regular file.");
+        } else {
+            System.out.println("The specified path does not exist or is not a directory or a regular file.");
+        }
+    }
+}
